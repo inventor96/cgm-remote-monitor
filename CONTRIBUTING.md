@@ -47,11 +47,11 @@ Nightscout is a Node.js application. The basic installation of the software for 
 
 1. Clone the software to your local machine using git
 2. Install Node from https://nodejs.org/en/download/
-2. Use `npm` to install Nightscout dependencies by invokin `npm install` in the project directory. Note the
-   dependency installation has to be done usign a non-root user - _do not use root_ for development and hosting
+2. Use `npm` to install Nightscout dependencies by invoking `npm install` in the project directory. Note the
+   dependency installation has to be done using a non-root user - _do not use root_ for development and hosting
    the software!
-3. Get a Mongo database by either installing Mongo locally, or get a free cloud account from mLab or Mongodb Atlas.
-4. Configure nightscout by copying `my.env.template` to `my.env` and run it - see the next chapter in the instructions
+3. Get a Mongo database by either installing Mongo locally, or get a free cloud account from mLab or MongoDB Atlas.
+4. Configure Nightscout by copying `my.env.template` to `my.env` and run it - see the next chapter in the instructions
 
 ## Develop on `dev`
 
@@ -59,7 +59,7 @@ We develop on the `dev` branch. All new pull requests should be targeted to `dev
 
 You can get the `dev` branch checked out using `git checkout dev`.
 
-Once checked out, install the dependencies using `npm install`, then copy the included `my.env.template`file to `my.env` and edit the file to include your settings (like the Mongo URL). Leave the `NODE_ENV=development` line intact. Once set, run the site using `npm run dev`. This will start Nigthscout in the development mode, with different code packaging rules and automatic restarting of the server using nodemon, when you save changed files on disk. The client also hot-reloads new code in, but it's recommended to reload the the website after changes due to the way the plugin sandbox works.
+Once checked out, install the dependencies using `npm install`, then copy the included `my.env.template`file to `my.env` and edit the file to include your settings (like the Mongo URL). Leave the `NODE_ENV=development` line intact. Once set, run the site using `npm run dev`. This will start Nightscout in the development mode, with different code packaging rules and automatic restarting of the server using nodemon, when you save changed files on disk. The client also hot-reloads new code in, but it's recommended to reload the website after changes due to the way the plugin sandbox works.
 
 Note the template sets `INSECURE_USE_HTTP` to `true` to enable the site to work over HTTP in local development.
 
@@ -72,15 +72,14 @@ for the API, run Nightscout locally and load the documentation from /api-docs (o
 files locally).
 
 Note all dates used to access the API and dates stored in the objects are expected to comply with the ISO-8601 format and
-be deserializable by the Javascript Date class. Of note here is the dates can contain a plus sign which has a special meaning in
-URL encoding, so when issuing requests that place dates to the URL, take special care to ensure the data is properly URL
+be deserializable by the Javascript Date class. Of note here is the dates can contain a plus sign which has a special meaning in URL encoding, so when issuing requests that place dates to the URL, take special care to ensure the data is properly URL
 encoded.
 
 ## Design & new features
 
 If you intend to add a new feature, please allow the community to participate in the design process by creating an issue to discuss your design. For new features, the issue should describe what use cases the new feature intends to solve, or which existing use cases are being improved.
 
-Note Nighscout has a plugin architecture for adding new features. We expect most code for new features live inside a Plugin, so the code retains a clear separation of concerns. If the Plugin API doesn't implement all features you need to implement your feature, please discuss with us on adding those features to the API. Note new features should under almost no circumstances require changes to the existing plugins.
+Note Nightscout has a plugin architecture for adding new features. We expect most code for new features live inside a Plugin, so the code retains a clear separation of concerns. If the Plugin API doesn't implement all features you need to implement your feature, please discuss with us on adding those features to the API. Note new features should under almost no circumstances require changes to the existing plugins.
 
 ## Style Guide
 
@@ -118,7 +117,7 @@ Now that the commits are available on github, you can click on the compare butto
 We assume all new Pull Requests are at least smoke tested by the author and all code in the PR actually works.
 Please include a description of what the features do and rationalize why the changes are needed.
 
-If you add any new NPM module dependencies, you have to rationalize why there are needed - we prefer pull requests that reduce dependencies, not add them.
+If you add any new NPM module dependencies, you have to rationalize why they are needed - we prefer pull requests that reduce dependencies, not add them.
 Before releasing a a new version, we check with `npm audit` if our dependencies don't have known security issues. 
 
 When adding new features that add configuration options, please ensure the `README` document is amended with information on the new configuration.
@@ -203,13 +202,13 @@ Also if you can't code, it's possible to contribute by improving the documentati
 | Release coordination 0.11.x:          | [@PieterGit] |
 | Issue/Pull request coordination:      | Please volunteer |
 | Cleaning up git fork spam:            | Please volunteer |
-| Documentation writers:                | [@andrew-warrington][@unsoluble] [@tynbendad] [@danamlewis] [@rarneson] |
+| Documentation writers:                | [@andrew-warrington] [@unsoluble] [@tynbendad] [@danamlewis] [@rarneson] |
 
 ### Plugin contributors
 
 | Contribution area                     | List of developers   | List of testers
 | ------------------------------------- | -------------------- | -------------------- |
-| [`alexa` (Amazon Alexa)](README.md#alexa-amazon-alexa)| Please volunteer | Please volunteer |
+| [`alexa` (Amazon Alexa)](README.md#alexa-amazon-alexa)| [@inventor96] | Please volunteer |
 | [`ar2` (AR2 Forecasting)](README.md#ar2-ar2-forecasting)| Please volunteer | Please volunteer |
 | [`basal` (Basal Profile)](README.md#basal-basal-profile)| Please volunteer | Please volunteer |
 | [`boluscalc` (Bolus Wizard)](README.md#boluscalc-bolus-wizard)| Please volunteer | Please volunteer |
@@ -224,7 +223,7 @@ Also if you can't code, it's possible to contribute by improving the documentati
 | [`direction` (BG Direction)](README.md#direction-bg-direction)| Please volunteer | Please volunteer |
 | [`errorcodes` (CGM Error Codes)](README.md#errorcodes-cgm-error-codes)| Please volunteer | Please volunteer |
 | [`food` (Custom Foods)](README.md#food-custom-foods)| Please volunteer | Please volunteer |
-| [`googlehome` (Google Home)](README.md#google-home) |[@mdomox] [@rickfriele] | [@mcdafydd] [@oteroos] [@jamieowendexcom] | 
+| [`googlehome` (Google Home/DialogFlow)](README.md#googlehome-google-homedialogflow)| [@mdomox] [@rickfriele] [@inventor96] | [@mcdafydd] [@oteroos] [@jamieowendexcom] | 
 | [`iage` (Insulin Age)](README.md#iage-insulin-age)| Please volunteer | Please volunteer |
 | [`iob` (Insulin-on-Board)](README.md#iob-insulin-on-board)| Please volunteer | Please volunteer |
 | [`loop` (Loop)](README.md#loop-loop)| Please volunteer | Please volunteer |
@@ -233,9 +232,9 @@ Also if you can't code, it's possible to contribute by improving the documentati
 | [`profile` (Treatment Profile)](README.md#profile-treatment-profile)| Please volunteer | Please volunteer |
 | [`pump` (Pump Monitoring)](README.md#pump-pump-monitoring)| Please volunteer | Please volunteer |
 | [`rawbg` (Raw BG)](README.md#rawbg-raw-bg)| [@jpcunningh] | Please volunteer |
-| [`sage` (Sensor Age)](README.md#sage-sensor-age)| @jpcunningh | Please volunteer |
+| [`sage` (Sensor Age)](README.md#sage-sensor-age)| [@jpcunningh] | Please volunteer |
 | [`simplealarms` (Simple BG Alarms)](README.md#simplealarms-simple-bg-alarms)| Please volunteer | Please volunteer |
-| [`speech` (Speech)](README.md#speech-speech) | [@sulkaharo] | Please volunteer |
+| [`speech` (Speech)](README.md#speech-speech)| [@sulkaharo] | Please volunteer |
 | [`timeago` (Time Ago)](README.md#timeago-time-ago)| Please volunteer | Please volunteer |
 | [`treatmentnotify` (Treatment Notifications)](README.md#treatmentnotify-treatment-notifications)| Please volunteer | Please volunteer |
 | [`upbat` (Uploader Battery)](README.md#upbat-uploader-battery)| [@jpcunningh] | Please volunteer |
@@ -252,7 +251,7 @@ Languages with less than 90% coverage will be removed in a future Nightscout ver
 | Čeština (`cs`) |Please volunteer|OK |
 | Deutsch (`de`) |[@viderehh] [@herzogmedia] |OK |
 | Dansk (`dk`)  | [@janrpn] |OK |
-| Ελληνικά `(el`)|Please volunteer|Needs attention: 68.5%|
+| Ελληνικά (`el`)|Please volunteer|Needs attention: 68.5%|
 | English (`en`)|Please volunteer|OK|
 | Español (`es`) |Please volunteer|OK|
 | Suomi (`fi`)|[@sulkaharo] |OK|
